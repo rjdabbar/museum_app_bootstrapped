@@ -35,6 +35,17 @@ MuseumApp::Application.configure do
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
 
+    config.action_mailer.default_url_options = { :host => 'stark-forest-9130.herokuapp.com' }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'example.com',
+    user_name:             ENV['GMAIL_USERnAME'],
+    password:              ENV['GMAIL_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true  }
+
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
